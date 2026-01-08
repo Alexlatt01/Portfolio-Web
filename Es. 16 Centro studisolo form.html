@@ -1,0 +1,159 @@
+<! doctype HTML>
+<html lang="it">
+<head>
+	<meta charset="UTF-8" />
+	<title>Centro studi</title>
+	<script>
+    function Calcola()
+	{
+		var Cognome = f1.txtcognome.value
+		var Nome = f1.txtnome.value
+		var Email = f1.txtemail.value
+		var CF =f1.txtCF.value
+
+		if (Cognome=="" || Nome=="" || Email=="" || CF=="")
+		 alert("Compila tutti i campi")
+		else if(Email.indexOf("@", 1)== -1)
+		alert("Indirizzo email sbagliato")
+
+     else
+	    {
+			var CostoTotale=0
+
+			var TIPO_SCUOLA =parseFloat(f1.rdScuola.value)
+			CostoTotale = CostoTotale + TIPO_SCUOLA
+         
+		for(i=0; i<6; i++)
+		if(f1.chkMaterie[i].checked){
+			var MATERIE = parseInt(f1.chkMaterie[i].value)
+			var Pacchetto_lezioni= parseInt(f1.Pacchetto.value)
+			CostoTotale = CostoTotale + MATERIE + Pacchetto_lezioni
+		}
+          
+
+		for(i=0; i<4; i++)
+		if(f1.chkSupporti[i].checked){
+			var SUPPORTI_DIDATTICI = parseFloat(f1.chkSupporti[i].value)
+			CostoTotale = CostoTotale + SUPPORTI_DIDATTICI
+		}
+        
+		var LABORATORI = parseFloat(f1.rdLab.value)
+		 CostoTotale = CostoTotale + LABORATORI
+
+		var LUOGO = parseFloat(f1.rdLuogo.value)
+		 CostoTotale = CostoTotale + LUOGO
+
+		 f1.N_Costo.value = CostoTotale
+		}
+
+
+	}
+      
+
+	
+			
+	</script>
+</head>
+<body bgcolor="#8fbc8f" style="margin-top:40; margin-left:400; margin-right:400">
+	<div align="center">
+	<h1><font color="white">Centro studiI</font></h1>
+	<h2><font color="white">'PITAGORA</font></h2>
+	
+	<form name="f1" method="post">
+	<fieldset style="border-color:#3cb371">
+		<fieldset style="border-color:#708090">
+		<legend><b>TIPO SCUOLA</b></legend><br>
+			Elementare<input type="radio" name="rdScuola" value="1" checked>&nbsp
+			Media <input type="radio" name="rdScuola" value="1.2">&nbsp
+			Superiore <input type="radio" name="rdScuola" value="1.3">&nbsp
+			Università <input type="radio" name="rdScuola" value="1.5">
+		</fieldset><br>
+		
+		<fieldset style="border-color:#708090">
+		<legend><b><font>DIDATTICA</font></b></legend><br>
+		
+			<fieldset style="border-color:#8fbc8f">
+			<legend><b><font>MATERIE</font></b></legend><br>
+			<table border="0">
+			<tr>
+				<td>Lingue</td><td><input type="checkbox" name="chkMaterie" value="20"></td>
+				<td>Materie Informatiche</td><td><input type="checkbox" name="chkMaterie" value="30"></td>
+				<td>Arte</td><td><input type="checkbox" name="chkMaterie" value="18"></td>
+			</tr>
+			<tr>
+				<td>Materie Letterarie</td><td><input type="checkbox" name="chkMaterie" value="20"></td>
+				<td>Materie Scientifiche</td><td><input type="checkbox" name="chkMaterie" value="25"></td>
+				<td>Latino e Greco</td><td><input type="checkbox" name="chkMaterie" value="30"></td>
+			</tr>
+			</table>
+			<br>
+			
+			Pacchetto lezioni:&nbsp <select name="Pacchetto">
+							<option value="5" selected>5 ore</option>
+							<option value="10">10 ore</option>
+							<option value="15">15 ore</option>
+							<option value="20">20 ore</option>
+								</select>
+				
+			</fieldset><br>
+			
+			<fieldset style="border-color:#8fbc8f">
+			<legend><b><font>SUPPORTI DIDATTICI</font></b></legend><br>
+			<table border="0">
+			<tr>
+				<td>Dispense</td><td><input type="checkbox" name="chkSupporti" value="30"></td>
+				<td>&nbsp Sintesi</td><td><input type="checkbox" name="chkSupporti" value="25"></td>
+				<td>&nbsp Mappe Concettuali</td><td><input type="checkbox" name="chkSupporti" value="20"></td>
+				<td>&nbsp Traduzioni</td><td><input type="checkbox" name="chkSupporti" value="30"></td>
+			</tr>
+			</table>
+			</fieldset><br>	
+			
+		</fieldset><br>		
+		
+		<fieldset style="border-color:#708090">
+		<legend><b>LABORATORI</b></legend><br>
+			Disegno<input type="radio" name="rdLab" value="1.4" checked>&nbsp
+			Pittura<input type="radio" name="rdLab" value="1.4">&nbsp
+			Musica <input type="radio" name="rdLab" value="1.3">&nbsp
+			Informatica<input type="radio" name="rdLab" value="1.2">
+			Lingue<input type="radio" name="rdLab" value="1.2">
+		</fieldset><br>
+			
+		<fieldset style="border-color:#708090">
+		<legend><b>LUOGO</b></legend><br>
+			Centro Studi<input type="radio" name="rdLuogo" value="1.2" checked>&nbsp
+			Online<input type="radio" name="rdLuogo" value="1">&nbsp
+			A domicilio<input type="radio" name="rdLuogo" value="1.4">&nbsp
+		</fieldset><br>	
+			
+		<fieldset style="border-color:#708090">
+		<legend><b><font>DATI FATTURAZIONE</font></b></legend><br>
+		<table border="0" >
+            <tr>
+                <td>Cognome</td><td><input type="text" name="txtcognome" required></td>
+				<td>Nome</td><td><input type="text" name="txtnome" required ></td>
+            </tr>
+			<tr>
+                <td>E-mail</td><td><input type="email" name="txtemail" required></td>
+				<td>CF</td><td><input type="text" name="txtCF" required></td>
+            </tr>
+		</table>
+		</fieldset><br>
+		
+		<fieldset style="border-color:#708090" >
+		<legend><b><font>PREZZO</font></b></legend><br>
+		Prezzo:&nbsp <input readonly type="number" name="N_Costo" style="border-color:white">&nbsp €
+		</fieldset><br>
+		
+	</fieldset><br>
+		
+		<input type="button" style="width:100; height:30; background-color:forestgreen; color:white" name="test" value="CALCOLA" onclick="Calcola()">&nbsp&nbsp		
+		
+		<input type="reset" style="width:100; height:30; background-color:red; color:white" name="Canc" value="ANNULLA">
+				
+</form>
+</div>
+</body>		
+</html>
+		
