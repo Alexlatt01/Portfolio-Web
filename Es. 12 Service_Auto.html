@@ -1,0 +1,109 @@
+<! doctype HTML>
+<html lang="it">
+<head>
+	<meta charset="UTF-8" />
+	<title>Service Auto</title>
+	<script>
+    function Calcola()
+	{
+	 var Cognome=f1.txtcognome.value
+	 var Nome=f1.txtnome.value
+	 var Email=f1.txtemail.value
+	 var CF=f1.txtCF.value
+	 
+	 if( Cognome=="" || Nome=="" || Email=="" || CF=="")
+	    alert("compilare tutti i campi")
+	else if (Email.indexOf("@", 1) == -1)
+	    alert("Indirizzo E-mail non corretto")
+	else 
+	 {
+	    var CostoTotale=0
+		
+		var Marchi=parseInt(f1.cmbMarchi.value)
+		CostoTotale = CostoTotale + Marchi 
+		
+		var Alim=parseInt(f1.rdAlimentazione.value)
+		CostoTotale = CostoTotale + Alim 
+		
+		for(i=0; i<6; i++)
+		if (f1.chkInterventi[i].checked){
+		   CostoTotale = CostoTotale + parseInt(f1.chkInterventi[i].value);
+		   }
+		   
+		 f1.N_Costo.value=CostoTotale
+		
+
+
+     
+
+
+	   
+	 }
+	 
+	
+	}
+	
+	
+	</script>
+</head>
+<body bgcolor="#b0e0e6" style="margin-top:40; margin-left:400; margin-right:400">
+	<div align="center">
+	<h1><font color="darkblue">Preventivo Service Auto</font></h1><br>
+	
+	<form name="f1" method="post">
+		<fieldset style="border-color:darkblue">
+		<legend><b>AUTO</b></legend><br>
+		Scegli Marca:&nbsp	<select name="cmbMarchi">
+							<option value="25" selected>ALFA ROMEO</option>
+							<option value="15">FIAT</option>
+							<option value="20">LANCIA</option>
+							</select>&nbsp&nbsp&nbsp
+		Alimentazione:&nbsp Benzina <input type="radio" name="rdAlimentazione" value="10" checked>
+							Diesel <input type="radio" name="rdAlimentazione" value="20">
+							Metano/GPL <input type="radio" name="rdAlimentazione" value="25">
+							Ibrida <input type="radio" name="rdAlimentazione" value="25">
+		</fieldset><br><br>
+		
+		<fieldset style="border-color:darkblue">
+		<legend><b><font>INTERVENTI</font></b></legend><br>
+		<table border="0">
+			<tr>
+			<td>Sostituzione olio motore</td><td><input type="checkbox" name="chkInterventi" value="80"></td>
+			<td>Sostituzione filtro olio motore</td><td><input type="checkbox" name="chkInterventi" value="10"></td>
+			<td>Sostituzione pastiglie freni</td><td><input type="checkbox" name="chkInterventi" value="50"></td>
+			</tr>
+		<tr>
+			<td>Sostituzione filtro carburante</td><td><input type="checkbox" name="chkInterventi" value="15"></td>
+			<td>Sostituzione cinghia distribuzione</td><td><input type="checkbox" name="chkInterventi" value="150"></td>
+			<td>Sostituzione filtro antipolline</td><td><input type="checkbox" name="chkInterventi" value="25"></td>
+			</tr>
+		</table>
+		</fieldset><br><br>
+		
+		<fieldset style="border-color:darkblue" >
+		<legend><b><font>DATI FATTURAZIONE</font></b></legend><br>
+		<table border="0" >
+            <tr>
+                <td>Cognome</td><td><input type="text" name="txtcognome" required></td>
+				<td>Nome</td><td><input type="text" name="txtnome" required ></td>
+            </tr>
+			<tr>
+                <td>E-mail</td><td><input type="email" name="txtemail" required></td>
+				<td>CF</td><td><input type="text" name="txtCF" required></td>
+            </tr>
+		</table>
+		</fieldset><br><br>
+		
+		<fieldset style="border-color:red" >
+		<legend><b><font>PREVENTIVO</font></b></legend><br>
+		Costo:&nbsp	<input readonly type="number" name="N_Costo" style="border-color:red">&nbsp €
+		</fieldset><br><br>
+		
+		<input type="button" style="width:100; height:30; background-color:forestgreen; color:white" name="test" value="CALCOLA" onclick="Calcola()">&nbsp&nbsp		
+		<input type="reset" style="width:100; height:30; background-color:red; color:white" name="Canc" value="ANNULLA">
+				
+</form>
+</div>
+</body>		
+</html>
+		
